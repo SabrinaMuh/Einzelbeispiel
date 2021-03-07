@@ -23,10 +23,10 @@ public class MainActivity extends Activity{
         final Button buttonBerechnen = (Button) findViewById(R.id.buttonBerechnung);
         textViewAnswer = (TextView) findViewById(R.id.textViewServerAntwort);
         editText = (EditText) findViewById(R.id.editText);
-        final String matrikelnr = editText.getText().toString();
         buttonAbschicken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                String matrikelnr = editText.getText().toString();
                 SimpleThread t = new SimpleThread(matrikelnr);
 
                 t.start();
@@ -47,11 +47,13 @@ public class MainActivity extends Activity{
             @Override
             public void onClick(View view) {
                 TextView textviewBerechnung = (TextView) findViewById(R.id.textViewBerechnung);
-                char[] matrikelarray = new char[matrikelnr.length()];
+                String matrikelnr = editText.getText().toString();
+                int[] matrikelarray = new int[matrikelnr.length()];
+                char[] newmatrikel = new char[matrikelnr.length()];
                 char[] character = new char[11];
 
                 for (int i = 0; i < matrikelarray.length; i++) {
-                    matrikelarray[i] = matrikelnr.charAt(i);
+                    matrikelarray[i] = Character.getNumericValue(matrikelnr.charAt(i));
                 }
                 char i = 'a';
                 character[0] = '0';
@@ -59,12 +61,11 @@ public class MainActivity extends Activity{
                     character[j] = i;
                     i++;
                 }
-                for (int j = 1; j < matrikelarray.length; j=j+2) {
-                    for (int k = 0; k < character.length; k++) {
-                        if (k == matrikelarray[j]) matrikelarray[j] = character[k];
-                    }
+                for (int j = 0; j < newmatrikel.length; j++) {
+                    if (j%2 == 1) newmatrikel[j] = character[matrikelarray[j]];
+                    else newmatrikel[j] = (char) (matrikelarray[j]+'0');
                 }
-                String newmatrikelnr = new String(matrikelarray);
+                String newmatrikelnr = new String(newmatrikel);
                 textviewBerechnung.setText(newmatrikelnr);
             }
         });
