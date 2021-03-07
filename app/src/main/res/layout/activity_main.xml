@@ -34,10 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Abschicken"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/buttonAbschicken"
+        android:layout_below="@+id/textViewServerAntwort"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="151dp" />
+        android:layout_marginTop="27dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,8 +45,28 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Antwort vom Server"
         android:id="@+id/textViewServerAntwort"
-        android:layout_marginBottom="76dp"
-        android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Berechnen"
+        android:id="@+id/buttonBerechnung"
+        android:layout_marginBottom="102dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/buttonAbschicken"
+        android:layout_alignStart="@+id/buttonAbschicken"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewBerechnung"
+        android:layout_below="@+id/buttonAbschicken"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
 </RelativeLayout>
