@@ -81,23 +81,17 @@ class SimpleThread extends Thread{
 
     @Override
     public void run (){
-        String fail = "gar nichts";
         try{
             String sentence = matrikelnr;
 
-            fail = "clientSocket";
             Socket clientSocket = new Socket("se2-isys.aau.at", 53212);
 
-            fail = "inFromServer";
             BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-            fail = "outToServer";
             DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
 
-            fail = "Matrikelnr";
             outToServer.writeBytes(sentence + "\n");
 
-            fail = "Text";
             answer = inFromServer.readLine();
 
             clientSocket.close();
